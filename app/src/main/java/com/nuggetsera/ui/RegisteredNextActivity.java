@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.nuggetsera.R;
+import com.nuggetsera.presenter.RegisteredNextPresenter;
+import com.nuggetsera.presenter.impl.RegisteredNextPresenterImpl;
+import com.nuggetsera.view.RegisteredNextView;
 import com.nuggetsera.widget.FixedEditView;
 import com.nuggetsera.widget.ReturnView;
 import com.nuggetsera.widget.UnderLineEditText;
@@ -22,8 +25,8 @@ import com.nuggetsera.widget.UnderLineEditText;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-class RegisteredNextActivity
-        extends BaseActivity
+public class RegisteredNextActivity
+        extends BaseActivity implements RegisteredNextView
 {
     @BindView(R.id.tv_return)
     ReturnView    mTvReturn;
@@ -40,10 +43,35 @@ class RegisteredNextActivity
     @BindView(R.id.et_next_password)
     FixedEditView mEtNextPassword;
 
+    private RegisteredNextPresenter mRegisteredNextPresenter;
+
     @Override
     public int getLayoutResId() {
         return R.layout.activity_registered_next;
     }
+
+    @Override
+    protected void init() {
+        super.init();
+
+        mRegisteredNextPresenter = new RegisteredNextPresenterImpl(this);
+
+        mTvReturn.getTvText().setText("上一步");
+
+        //设置昵称输入框
+        setEtUserName();
+
+        //设置邀请码输入框
+        setEtInviteCode();
+
+        //设置密码输入框
+        setEtPassword();
+
+        //设置确认密码输入框
+        setEtNextPassword();
+
+    }
+
 
 
     @OnClick({R.id.tv_return,
@@ -62,26 +90,6 @@ class RegisteredNextActivity
         }
     }
 
-
-    @Override
-    protected void init() {
-        super.init();
-
-        mTvReturn.getTvText().setText("上一步");
-
-        //设置昵称输入框
-        setEtUserName();
-
-        //设置邀请码输入框
-        setEtInviteCode();
-
-        //设置密码输入框
-        setEtPassword();
-
-        //设置确认密码输入框
-        setEtNextPassword();
-
-    }
 
     private void setEtUserName() {
         mEtUserName.getFixText().setText("昵"+"\u3000\u3000"+"称");

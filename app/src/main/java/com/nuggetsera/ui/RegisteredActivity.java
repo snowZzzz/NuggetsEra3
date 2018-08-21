@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.nuggetsera.R;
+import com.nuggetsera.presenter.RegisteredPresenter;
+import com.nuggetsera.presenter.impl.RegisteredPresenterImpl;
+import com.nuggetsera.view.RegisteredView;
 import com.nuggetsera.widget.FixedEditView;
 import com.nuggetsera.widget.GetCodeEditView;
 import com.nuggetsera.widget.ReturnView;
@@ -22,9 +25,7 @@ import com.nuggetsera.widget.UnderLineEditText;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-class RegisteredActivity
-        extends BaseActivity
-{
+public class RegisteredActivity extends BaseActivity implements RegisteredView{
 
 
     @BindView(R.id.btn_next)
@@ -36,10 +37,27 @@ class RegisteredActivity
     @BindView(R.id.tv_return)
     ReturnView      mTvReturn;
 
+    private RegisteredPresenter mRegisteredPresenter;
 
     @Override
     public int getLayoutResId() {
         return R.layout.activity_registered;
+    }
+
+
+    @Override
+    protected void init() {
+        super.init();
+        mRegisteredPresenter = new RegisteredPresenterImpl(this);
+
+        mTvReturn.getTvText().setText("登录");
+
+        //设置号码输入框
+        setRegisterTel();
+
+        //设置验证码输入框
+        setAuthCode();
+
     }
 
 
@@ -54,21 +72,6 @@ class RegisteredActivity
                 goTo(RegisteredNextActivity.class);
                 break;
         }
-    }
-
-
-    @Override
-    protected void init() {
-        super.init();
-
-        mTvReturn.getTvText().setText("登录");
-
-        //设置号码输入框
-        setRegisterTel();
-
-        //设置验证码输入框
-        setAuthCode();
-
     }
 
 

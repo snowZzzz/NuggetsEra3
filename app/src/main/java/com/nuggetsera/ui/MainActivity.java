@@ -6,12 +6,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nuggetsera.R;
+import com.nuggetsera.view.MainView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainActivity
-        extends BaseActivity
+        extends BaseActivity implements MainView
 {
 
 

@@ -9,21 +9,22 @@ package com.nuggetsera.ui;
  *  @描述：    修改密码第二个页面
  */
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.nuggetsera.R;
+import com.nuggetsera.presenter.ChangePasswordTwoPresenter;
+import com.nuggetsera.presenter.impl.ChangePasswordTwoPresenterImpl;
+import com.nuggetsera.view.ChangePasswordTwoView;
 import com.nuggetsera.widget.FixedEdit;
 import com.nuggetsera.widget.TitleView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-class ChangePasswordTwoActivity
-        extends BaseActivity
+public class ChangePasswordTwoActivity
+        extends BaseActivity implements ChangePasswordTwoView
 {
 
 
@@ -36,22 +37,18 @@ class ChangePasswordTwoActivity
     @BindView(R.id.btn_ensure)
     Button    mBtnEnsure;
 
+    private ChangePasswordTwoPresenter mChangePasswordTwoPresenter;
+
     @Override
     public int getLayoutResId() {
         return R.layout.activity_change_password_two;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
-
-    @Override
     protected void init() {
         super.init();
+
+        mChangePasswordTwoPresenter = new ChangePasswordTwoPresenterImpl(this);
 
         //设置返回按钮
         setReturnBtn();
@@ -60,6 +57,7 @@ class ChangePasswordTwoActivity
         setEditText();
 
     }
+
 
     private void setReturnBtn() {
         mTitle.getLlReturn().setOnClickListener(new View.OnClickListener() {

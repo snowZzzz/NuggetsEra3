@@ -16,12 +16,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nuggetsera.R;
+import com.nuggetsera.view.MyView;
 import com.nuggetsera.widget.ReturnView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MyActivity extends BaseActivity {
+public class MyActivity extends BaseActivity implements MyView{
     @BindView(R.id.tv_return)
     ReturnView mTvReturn;
     @BindView(R.id.iv_icon)
@@ -72,6 +73,14 @@ public class MyActivity extends BaseActivity {
     @Override
     public int getLayoutResId() {
         return R.layout.activity_my;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+
+
+
     }
 
     @OnClick({R.id.tv_return, R.id.ll_nuggets, R.id.ll_gold, R.id.ll_gold_sum, R.id.rl_personal_data, R.id.rl_account_manage, R.id.rl_my_task, R.id.rl_game_introduction, R.id.rl_version_update, R.id.rl_contact_us})

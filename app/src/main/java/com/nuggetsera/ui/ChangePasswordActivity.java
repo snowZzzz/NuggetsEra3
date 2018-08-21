@@ -14,14 +14,17 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.nuggetsera.R;
+import com.nuggetsera.presenter.ChangePasswordPresenter;
+import com.nuggetsera.presenter.impl.ChangePasswordPresenterImpl;
+import com.nuggetsera.view.ChangePasswordView;
 import com.nuggetsera.widget.AuthCodeView;
 import com.nuggetsera.widget.TitleView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-class ChangePasswordActivity
-        extends BaseActivity
+public class ChangePasswordActivity
+        extends BaseActivity implements ChangePasswordView
 {
 
     @BindView(R.id.btn_next)
@@ -33,6 +36,8 @@ class ChangePasswordActivity
     @BindView(R.id.et_auth_code)
     AuthCodeView mEtAuthCode;
 
+    private ChangePasswordPresenter mChangePasswordPresenter;
+
     @Override
     public int getLayoutResId() {
         return R.layout.activity_change_password;
@@ -41,6 +46,8 @@ class ChangePasswordActivity
     @Override
     protected void init() {
         super.init();
+
+        mChangePasswordPresenter = new ChangePasswordPresenterImpl(this);
 
         //设置返回键
         setRuturnBtn();
