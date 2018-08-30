@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NuggetsEra.iml" filepath="$PROJECT_DIR$/NuggetsEra.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myokrx/myokrx.iml" filepath="$PROJECT_DIR$/myokrx/myokrx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nglibrary/nglibrary.iml" filepath="$PROJECT_DIR$/nglibrary/nglibrary.iml" />
     </modules>
   </component>
 </project>

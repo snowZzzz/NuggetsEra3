@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,52 +8,75 @@
     tools:context="com.nuggetsera.ui.MainActivity">
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"
-            android:src="@drawable/login_logo"
             android:layout_width="88dp"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/login_logo" />
 
         <com.nuggetsera.widget.FixedEditView
             android:id="@+id/et_phone_num"
-            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp" />
 
         <com.nuggetsera.widget.FixedEditView
             android:id="@+id/et_password"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="登录"
-            android:textColor="@android:color/white"
-            android:background="@drawable/login_btn_shape"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_marginTop="10dp" />
 
-        <LinearLayout
-            android:layout_marginTop="40dp"
-            android:gravity="center"
+        <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="35dp"-->
+            <!--android:layout_marginRight="35dp"-->
+            <!--android:id="@+id/frame_layout"-->
+            <!--android:layout_marginTop="30dp">-->
+
+            <!--<com.nuggetsera.widget.BorderTextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:paddingBottom="20dp"-->
+                <!--android:paddingTop="20dp"-->
+                <!--android:text="&#8194;&#8194;&#8194;&#8194;"-->
+                <!--/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_height="50dp">-->
+                <!--<com.nuggetsera.widget.ColorTextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:text="完成注册" />-->
+            <!--</LinearLayout>-->
+        <!--</FrameLayout>-->
+        <com.nuggetsera.widget.GradientBtnLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/frame_layout"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            app:btnText="登录"></com.nuggetsera.widget.GradientBtnLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -61,29 +84,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="忘记密码?"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
             <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_width="3dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:text="|"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
+
             <TextView
                 android:id="@+id/tv_registered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="用户注册"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
     </LinearLayout>
-
-
-
 
 
 </RelativeLayout>

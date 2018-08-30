@@ -8,7 +8,8 @@
     <color name="btn_bg_color">#e47546</color>
     <color name="home_bg_color">#fffaeb</color>
     <color name="fixed_text_color">#ffffff</color>
+    <color name="btn_border_color">#EEEEB8</color>
 
-
+    <color name="white_color">#ffffff</color>
 
 </resources>

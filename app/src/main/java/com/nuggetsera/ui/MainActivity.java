@@ -4,9 +4,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nuggetsera.R;
 import com.nuggetsera.view.MainView;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,6 +43,8 @@ public class MainActivity
     TextView     mTvForceValue;
     @BindView(R.id.tv_gold_value)
     TextView     mTvGoldValue;
+
+    private long lasttime = 0;
 
     @Override
     public int getLayoutResId() {
@@ -87,6 +92,19 @@ public class MainActivity
             case R.id.tv_gold_value:     //紫金
 
                 break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        long n = Calendar.getInstance().getTimeInMillis();
+
+        if (n - lasttime < 2000) {
+            setResult(RESULT_OK);
+            super.onBackPressed();
+        } else {
+            Toast.makeText(this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+            lasttime = n;
         }
     }
 }

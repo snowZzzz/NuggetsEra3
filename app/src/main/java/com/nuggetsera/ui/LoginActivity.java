@@ -12,15 +12,23 @@ package com.nuggetsera.ui;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.nglibrary.UserBean;
+import com.example.nglibrary.http.OnHttpResponseListener;
+import com.example.nglibrary.http.WanService;
+import com.example.nglibrary.http.rxjavahelper.RxObserver;
+import com.example.nglibrary.http.rxjavahelper.RxResultHelper;
+import com.example.nglibrary.http.rxjavahelper.RxSchedulersHelper;
 import com.nuggetsera.R;
 import com.nuggetsera.presenter.LoginPresenter;
 import com.nuggetsera.presenter.impl.LoginPresenterImpl;
 import com.nuggetsera.view.LoginView;
 import com.nuggetsera.widget.FixedEditView;
+import com.nuggetsera.widget.GradientBtnLayout;
 import com.nuggetsera.widget.UnderLineEditText;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,12 +41,14 @@ public class LoginActivity
     TextView mTvRetrievePassword;
     @BindView(R.id.tv_registered)
     TextView mTvRegistered;
-    @BindView(R.id.btn_login)
-    Button mBtnLogin;
+//    @BindView(R.id.btn_login)
+//    BorderTextView mBtnLogin;
     @BindView(R.id.et_phone_num)
     FixedEditView mEtPhoneNum;
     @BindView(R.id.et_password)
     FixedEditView mEtPassword;
+    @BindView(R.id.frame_layout)
+    GradientBtnLayout mFrameLayout;
     private LoginPresenter mLoginPresenter;
 
     @Override
@@ -61,11 +71,8 @@ public class LoginActivity
     }
 
     private void setPhoneEdit() {
-
         UnderLineEditText fixEdit = mEtPhoneNum.getFixEdit();
         fixEdit.setInputType(InputType.TYPE_CLASS_PHONE);
-
-
     }
 
     private void setPasswordEdit() {
@@ -82,7 +89,7 @@ public class LoginActivity
     }
 
     @OnClick({R.id.tv_retrieve_password,
-            R.id.tv_registered, R.id.btn_login})
+            R.id.tv_registered, R.id.frame_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_retrieve_password:     //修改密码
@@ -91,9 +98,38 @@ public class LoginActivity
             case R.id.tv_registered:            //注册
                 goTo(RegisteredActivity.class);
                 break;
-            case R.id.btn_login:                //登录成功
-                goTo(MainActivity.class);
+            case R.id.frame_layout:
+//                goTo(TestBtnActivity.class);
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put("mobilePhone", "18813918090");
+                map.put("password", "111111");
+
+                WanService.requestPost(map, new OnHttpResponseListener() {
+                    @Override
+                    public void onHttpRequestSuccess() {
+
+                    }
+
+                    @Override
+                    public void onHttpRequestError() {
+
+                    }
+
+                    @Override
+                    public void showProgress() {
+
+                    }
+
+                    @Override
+                    public void hideProgress() {
+
+                    }
+                });
                 break;
+//            case R.id.btn_login:                //登录成功
+//                goTo(MainActivity.class);
+//                break;
         }
     }
 
